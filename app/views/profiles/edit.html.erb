@@ -1,0 +1,30 @@
+<h1>Edit Profile</h1>
+
+<%= form_with model: Current.user, url: profile_path, data: { turbo: false} do |form| %>
+    <% if form.object.errors.any? %>
+        <div class="alert alert-danger">
+            <% form.object.errors.full_messages.each do |message| %>
+                <div>
+                    <%= message %>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+    <div class = "mb-3">
+        <%= form.label :name, "Name" %>
+        <%= form.text_field :name, class:"form-control", value:Current.user.name %>
+    </div>
+    <div class = "mb-3">
+        <%= form.label :dob, "Birthday" %>
+        <%= form.date_field :dob, class:"form-control", value:Current.user.dob %>
+    </div>
+    <div class = "mb-3">
+        <%= form.label :about, "About" %>
+        <%= form.text_area :about, class:"form-control", value:Current.user.about %>
+    </div>
+
+    <div class="mb-3">
+        <%= form.submit "Update Profile"%>
+    </div>
+
+<% end %>

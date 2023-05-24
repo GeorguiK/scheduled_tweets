@@ -21,4 +21,8 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#destroy"
 
+  get "/profile", to: "profiles#profile"
+  patch "/profile", to: "profiles#update"
+  get "/profile/edit", to: "profiles#edit", as: :edit_profile
+
 end
